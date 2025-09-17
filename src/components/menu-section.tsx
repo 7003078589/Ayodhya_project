@@ -4,14 +4,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Leaf, Star, Clock, DollarSign, ChefHat, Sparkles, ArrowRight, Plus } from "lucide-react";
+import { Leaf, Star, Clock, ChefHat, Sparkles, ArrowRight, Plus } from "lucide-react";
 
 const MenuSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeCategory, setActiveCategory] = useState("all");
-  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [hoveredItem] = useState<number | null>(null);
 
   const categories = [
     { id: "all", name: "All Items", icon: ChefHat },

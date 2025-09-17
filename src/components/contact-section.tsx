@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Navigation, Star, Heart, Sparkles } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Navigation, Star, Heart } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
@@ -154,8 +154,8 @@ const ContactSection = () => {
           </h2>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We'd love to hear from you. Whether you have questions about our menu, 
-            want to book our party hall, or just want to say hello, we're here to help.
+            We&apos;d love to hear from you. Whether you have questions about our menu, 
+            want to book our party hall, or just want to say hello, we&apos;re here to help.
           </p>
         </motion.div>
 
@@ -178,7 +178,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900">Send us a Message</h3>
-                    <p className="text-gray-600">We'll get back to you within 24 hours</p>
+                    <p className="text-gray-600">We&apos;ll get back to you within 24 hours</p>
                   </div>
                 </div>
 

@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Clock, Users, Phone, Mail, CheckCircle, AlertCircle, Sparkles, Star, Heart } from "lucide-react";
+import { Calendar, Clock, Users, Phone, Mail, Star } from "lucide-react";
 import { toast } from "sonner";
 
 const ReservationSection = () => {
@@ -27,7 +27,7 @@ const ReservationSection = () => {
     type: "restaurant"
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep] = useState(1);
 
   const timeSlots = [
     "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM",
@@ -381,7 +381,7 @@ const ReservationSection = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm italic">"{testimonial.comment}"</p>
+                  <p className="text-gray-600 text-sm italic">&quot;{testimonial.comment}&quot;</p>
                 </motion.div>
               ))}
             </div>

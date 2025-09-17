@@ -11,7 +11,7 @@ const PartyHallSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedImage, setSelectedImage] = useState(0);
-  const [hoveredPackage, setHoveredPackage] = useState<number | null>(null);
+  const [hoveredPackage] = useState<number | null>(null);
 
   const galleryImages = [
     { id: 1, title: "Main Hall View", description: "Spacious and elegant main dining area", capacity: "150 guests" },

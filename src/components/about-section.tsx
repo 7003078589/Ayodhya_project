@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Leaf, Heart, Award, Users, Clock, Star, ArrowRight, Sparkles } from "lucide-react";
+import { Leaf, Heart, Award, Users, Star, ArrowRight, Sparkles } from "lucide-react";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -134,12 +134,12 @@ const AboutSection = () => {
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
                   Founded in 2015, Adhoya began as a small family restaurant with a simple mission: 
-                  to prove that vegetarian food can be the star of any meal. Over the years, we've 
+                  to prove that vegetarian food can be the star of any meal. Over the years, we&apos;ve 
                   grown into a premier destination for those seeking exceptional plant-based cuisine.
                 </p>
                 <p>
                   Our commitment to quality, sustainability, and innovation has earned us recognition 
-                  as one of the city's finest vegetarian restaurants. We're proud to serve dishes that 
+                  as one of the city&apos;s finest vegetarian restaurants. We&apos;re proud to serve dishes that 
                   celebrate the natural flavors of fresh, seasonal ingredients.
                 </p>
               </div>

@@ -156,7 +156,7 @@ export default function PartyHall() {
             <div className="space-y-4 text-lg text-gray-600">
               <p>
                 Our elegant party hall provides the perfect backdrop for your most important moments. 
-                Whether you're celebrating a birthday, anniversary, corporate event, or wedding reception, 
+                Whether you&apos;re celebrating a birthday, anniversary, corporate event, or wedding reception, 
                 we create unforgettable experiences tailored to your vision.
               </p>
               <p>
