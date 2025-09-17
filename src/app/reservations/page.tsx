@@ -37,8 +37,8 @@ export default function Reservations() {
                 Our team is ready to make your visit memorable.
               </p>
               <p>
-                Whether it's a romantic dinner, family celebration, or business meeting, 
-                we'll ensure the perfect setting for your occasion.
+                Whether it&apos;s a romantic dinner, family celebration, or business meeting, 
+                we&apos;ll ensure the perfect setting for your occasion.
               </p>
             </div>
             <div className="flex items-center space-x-4 mb-8">

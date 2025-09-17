@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Twitter, Star, MapPin, Phone, Clock } from "lucide-react";
+import { Instagram, Twitter, Star, MapPin, Phone, Clock } from "lucide-react";
 
 export default function Home() {
   return (
@@ -168,7 +168,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-gray-800 mb-8">Our Culinary Journey</h2>
             <p className="text-xl text-gray-600 leading-relaxed mb-12">
-              At Ayodhya, we believe that vegetarian cuisine is not just about what you don't eat, 
+              At Ayodhya, we believe that vegetarian cuisine is not just about what you don&apos;t eat, 
               but about celebrating the incredible flavors and textures that nature provides. 
               Our chefs combine traditional techniques with modern innovation to create dishes 
               that are both familiar and surprising.

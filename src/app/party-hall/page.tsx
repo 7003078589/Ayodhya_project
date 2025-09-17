@@ -101,7 +101,7 @@ export default function PartyHall() {
             <div className="space-y-4 text-gray-600 mb-8">
               <p>
                 Our elegant party hall provides the perfect backdrop for your most important moments. 
-                Whether you're celebrating a birthday, anniversary, or corporate event.
+                Whether you&apos;re celebrating a birthday, anniversary, or corporate event.
               </p>
               <p>
                 With flexible seating arrangements, professional sound systems, and our signature 
@@ -196,7 +196,7 @@ export default function PartyHall() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-amber-800 text-center mb-12">Event Packages</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
+            {packages.map((pkg) => (
               <Card key={pkg.name} className={`relative hover:shadow-lg transition-shadow border-amber-200 ${pkg.popular ? 'ring-2 ring-amber-500' : ''}`}>
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -232,7 +232,7 @@ export default function PartyHall() {
       <div className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-amber-800 text-center mb-12">Venue Amenities</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {amenities.map((amenity, index) => (
+            {amenities.map((amenity) => (
             <Card key={amenity.title} className="text-center hover:shadow-lg transition-shadow border-amber-200">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -260,7 +260,7 @@ export default function PartyHall() {
               { title: "Holiday Celebrations", icon: "🎉" },
               { title: "Baby Showers", icon: "👶" },
               { title: "Retirement Parties", icon: "🏆" }
-            ].map((event, index) => (
+            ].map((event) => (
               <div key={event.title} className="text-center">
                 <div className="text-4xl mb-3">{event.icon}</div>
                 <h3 className="text-lg font-semibold">{event.title}</h3>
@@ -276,7 +276,7 @@ export default function PartyHall() {
           <h2 className="text-4xl font-bold text-amber-800 mb-6">Ready to Plan Your Event?</h2>
           <p className="text-lg text-gray-600 mb-8">
             Contact our event planning team to discuss your vision and create the perfect celebration. 
-            We're here to make your special day unforgettable.
+            We&apos;re here to make your special day unforgettable.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-amber-600 hover:bg-amber-700 text-white">

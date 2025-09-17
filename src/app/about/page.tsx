@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Award, Users, Leaf, Clock, Star, MapPin, Phone } from "lucide-react";
+import { Award, Users, Leaf, Clock } from "lucide-react";
 
 export default function About() {
   const values = [
@@ -95,7 +95,7 @@ export default function About() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
+            {values.map((value) => (
               <div key={value.title} className="text-center group hover:shadow-lg transition-all duration-300 bg-white rounded-lg p-8 border border-gray-100">
                 <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <value.icon className="w-8 h-8 text-white" />
@@ -122,20 +122,20 @@ export default function About() {
                     she has created a unique fusion that celebrates the best of vegetarian cuisine.
                   </p>
                   <p>
-                    Chef Priya's philosophy is simple: "Great food comes from great ingredients, prepared with 
-                    respect for tradition and a willingness to innovate." Her dishes have been featured in 
-                    numerous culinary magazines and have earned her recognition as one of the city's top 
+                    Chef Priya&apos;s philosophy is simple: &quot;Great food comes from great ingredients, prepared with 
+                    respect for tradition and a willingness to innovate.&quot; Her dishes have been featured in 
+                    numerous culinary magazines and have earned her recognition as one of the city&apos;s top 
                     vegetarian chefs.
                   </p>
                   <p>
-                    When she's not in the kitchen, Chef Priya enjoys teaching cooking classes and working with 
+                    When she&apos;s not in the kitchen, Chef Priya enjoys teaching cooking classes and working with 
                     local farmers to source the finest seasonal ingredients for our menu.
                   </p>
                 </div>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Link href="/menu">
                     <Button className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-lg font-semibold">
-                      View Chef's Menu
+                      View Chef&apos;s Menu
                     </Button>
                   </Link>
                   <Link href="/contact">

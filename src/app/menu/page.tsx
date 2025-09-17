@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Star, Leaf, Clock } from "lucide-react";
+import { Star, Leaf } from "lucide-react";
 
 export default function Menu() {
   const menuCategories = [
@@ -109,7 +109,7 @@ export default function Menu() {
       {/* Menu Categories */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-8">
-          {menuCategories.map((category, categoryIndex) => (
+          {menuCategories.map((category) => (
             <div key={category.title} className="mb-20">
               <div className="text-center mb-12">
                 <div className="text-6xl mb-4">{category.icon}</div>
@@ -118,7 +118,7 @@ export default function Menu() {
               </div>
               
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {category.items.map((item, itemIndex) => (
+                {category.items.map((item) => (
                   <div key={item.name} className="group hover:shadow-lg transition-all duration-300 bg-white rounded-lg p-6 border border-gray-100">
                     <div className="flex justify-between items-start mb-3">
                       <div className="flex-1">

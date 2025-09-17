@@ -43,7 +43,7 @@ export default function Contact() {
               CONTACT US
             </h1>
             <p className="text-2xl text-gray-600 font-light mb-12 italic">
-              We'd love to hear from you
+              We&apos;d love to hear from you
             </p>
             <div className="space-y-4 text-gray-600 mb-8">
               <p>
@@ -51,8 +51,8 @@ export default function Contact() {
                 Our team is here to help make your experience at Ayodhya unforgettable.
               </p>
               <p>
-                Whether you're planning a special celebration or just want to learn more 
-                about our vegetarian cuisine, we're always happy to assist.
+                Whether you&apos;re planning a special celebration or just want to learn more 
+                about our vegetarian cuisine, we&apos;re always happy to assist.
               </p>
             </div>
             <div className="flex items-center space-x-4 mb-8">
@@ -106,7 +106,7 @@ export default function Contact() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
+            {contactInfo.map((info) => (
               <div key={info.title} className="text-center group hover:shadow-lg transition-all duration-300 bg-white rounded-lg p-8 border border-gray-100">
                 <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <info.icon className="w-8 h-8 text-white" />
