@@ -1,14 +1,37 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Instagram, Twitter, Star, MapPin, Phone, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  // Image slider state
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const diskImages = [
+    "/images/dishes/dosa.jpg",
+    "/images/dishes/idlli.jpg",
+    "/images/dishes/vada.jpg",
+    "/images/dishes/rice.jpg",
+    "/images/dishes/disk1.jpg"
+  ];
+
+  // Auto-slide effect - continuous sliding
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % diskImages.length);
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [diskImages.length]);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Split Layout Hero Section */}
       <section className="min-h-screen flex">
         {/* Left Side - Content */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-16 relative">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-16 relative bg-gradient-to-br from-gray-50 to-white shadow-inner border-r border-gray-200">
           {/* Social Media Icons */}
           <div className="absolute top-8 left-8 flex flex-col space-y-4">
             <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors cursor-pointer">
@@ -43,59 +66,95 @@ export default function Home() {
                   <circle cx="70" cy="70" r="3" fill="#D97706"/>
                 </svg>
               </div>
-              <h1 className="text-6xl lg:text-7xl font-bold text-amber-600 leading-tight">
-                AYODHYA
+              <h1 className="text-6xl lg:text-7xl font-bold leading-tight relative">
+                <span className="bg-gradient-to-br from-amber-500 to-amber-700 bg-clip-text text-transparent drop-shadow-lg">
+                  AYODHYA
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent bg-clip-text text-transparent blur-sm">
+                  AYODHYA
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-300/30 to-amber-500/20 bg-clip-text text-transparent blur-sm -translate-x-1 -translate-y-1">
+                  AYODHYA
+                </div>
               </h1>
+              
+              {/* UPAHAR Text */}
+              <div className="mt-4 relative">
+                <h2 className="text-2xl lg:text-3xl font-semibold text-amber-600 relative">
+                  <span className="bg-gradient-to-r from-amber-600 to-amber-800 bg-clip-text text-transparent drop-shadow-md">
+                    UPAHAR
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent bg-clip-text text-transparent blur-sm">
+                    UPAHAR
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-400/40 to-amber-600/30 bg-clip-text text-transparent blur-sm -translate-x-0.5 -translate-y-0.5">
+                    UPAHAR
+                  </div>
+                </h2>
+              </div>
             </div>
 
             {/* Tagline */}
-            <p className="text-2xl text-gray-600 font-light mb-12 italic">
-              Where Vegetarian Cuisine Meets Art
-            </p>
+            <div className="text-2xl font-light mb-12 italic relative">
+              <span className="bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent drop-shadow-md">
+                Where Vegetarian Cuisine Meets Art
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent bg-clip-text text-transparent blur-sm">
+                Where Vegetarian Cuisine Meets Art
+              </div>
+            </div>
 
             {/* Call to Action */}
             <Link href="/menu">
-              <Button className="border-2 border-amber-600 text-amber-600 bg-transparent hover:bg-amber-600 hover:text-white px-8 py-4 text-lg font-semibold transition-all duration-300">
-                Explore Our Menu
+              <Button className="relative border-2 border-amber-600 text-amber-600 bg-gradient-to-br from-white to-gray-50 hover:bg-amber-600 hover:text-white px-8 py-4 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                <span className="relative z-10">Explore Our Menu</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-md"></div>
               </Button>
             </Link>
           </div>
 
           {/* Contact Info */}
-          <div className="absolute bottom-8 left-8 space-y-2 text-sm text-gray-500">
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4" />
-              <span>+1 (555) 123-4567</span>
+          <div className="absolute bottom-8 left-8 space-y-2 text-sm">
+            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md border border-gray-200">
+              <Phone className="w-4 h-4 text-amber-600" />
+              <span className="text-gray-700 font-medium">+1 (555) 123-4567</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Clock className="w-4 h-4" />
-              <span>Mon-Sun: 11AM - 10PM</span>
+            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md border border-gray-200">
+              <Clock className="w-4 h-4 text-amber-600" />
+              <span className="text-gray-700 font-medium">Mon-Sun: 11AM - 10PM</span>
             </div>
           </div>
         </div>
 
         {/* Right Side - Food Photography */}
-        <div className="w-full lg:w-1/2 relative overflow-hidden">
-          {/* Main Food Image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-amber-100">
-            <div className="absolute inset-0 flex items-center justify-center">
-              {/* Beautiful Food Display */}
-              <div className="relative">
-                {/* Main Dish */}
-                <div className="w-80 h-80 bg-white rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-4 bg-gradient-to-br from-amber-200 to-amber-300 rounded-full flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-6xl mb-4">🍽️</div>
-                      <div className="text-amber-800 font-semibold text-lg">Signature Dish</div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute -top-8 -right-8 w-16 h-16 bg-amber-200 rounded-full opacity-60"></div>
-                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-amber-300 rounded-full opacity-40"></div>
-                <div className="absolute top-1/2 -left-12 w-8 h-8 bg-amber-400 rounded-full opacity-50"></div>
+        <div className="w-full lg:w-1/2 relative overflow-hidden min-h-[60vh] lg:min-h-screen bg-[url('/Image/home3.jpg')] bg-cover bg-center">
+          {/* Semi-transparent overlay */}
+          <div className="absolute inset-0 bg-white/40"></div>
+          
+          {/* Circular Food Display */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative">
+              {/* Main Dish */}
+              <div className="w-80 h-80 rounded-full shadow-2xl relative overflow-hidden bg-gray-100">
+                {diskImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt="Ayodhya Restaurant Signature Dish"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                      index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onError={(e) => {
+                      e.currentTarget.src = '/images/dishes/dosa.jpg';
+                    }}
+                  />
+                ))}
               </div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute -top-8 -right-8 w-16 h-16 bg-amber-200 rounded-full opacity-60"></div>
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-amber-300 rounded-full opacity-40"></div>
+              <div className="absolute top-1/2 -left-12 w-8 h-8 bg-amber-400 rounded-full opacity-50"></div>
             </div>
           </div>
 
@@ -188,6 +247,28 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* India Culture Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        {/* Text content in clean white area */}
+        <div className="text-center mb-12 px-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 leading-relaxed">
+            Experience the essence of Indian culture through our<br />
+            culinary delights.
+          </h2>
+        </div>
+        
+        {/* Full width doodle image */}
+        <div className="w-full overflow-hidden">
+          <img 
+            src="/Image/13.png" 
+            alt="Indian Culture Doodles" 
+            className="w-full h-auto object-cover -m-1"
+            style={{ border: 'none', outline: 'none' }}
+          />
+        </div>
+      </section>
+
     </div>
   );
 }
