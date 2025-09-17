@@ -258,8 +258,6 @@ const PartyHallSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
-                onMouseEnter={() => setHoveredPackage(index)}
-                onMouseLeave={() => setHoveredPackage(null)}
                 className="group relative"
               >
                 <div className={`relative p-8 rounded-3xl transition-all duration-300 ${
