@@ -261,7 +261,7 @@ export default function Home() {
         {/* Full width doodle image */}
         <div className="w-full overflow-hidden">
           <img 
-            src="/Image/13.png" 
+            src="/Image/14.png" 
             alt="Indian Culture Doodles" 
             className="w-full h-auto object-cover -m-1"
             style={{ border: 'none', outline: 'none' }}
