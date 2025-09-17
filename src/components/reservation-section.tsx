@@ -27,7 +27,6 @@ const ReservationSection = () => {
     type: "restaurant"
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [currentStep] = useState(1);
 
   const timeSlots = [
     "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM",

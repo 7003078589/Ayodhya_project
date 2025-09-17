@@ -10,7 +10,6 @@ const MenuSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeCategory, setActiveCategory] = useState("all");
-  const [hoveredItem] = useState<number | null>(null);
 
   const categories = [
     { id: "all", name: "All Items", icon: ChefHat },
@@ -253,8 +252,6 @@ const MenuSection = () => {
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
               className="group"
             >
               <div className="flex items-center space-x-8 p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:bg-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10">
