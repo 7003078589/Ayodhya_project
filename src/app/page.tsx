@@ -56,6 +56,18 @@ export default function Home() {
       name: "Rice",
       description: "Fragrant basmati rice with vegetables and spices",
       image: "/images/dishes/rice.jpg"
+    },
+    {
+      id: 7,
+      name: "Fried Rice",
+      description: "Delicious fried rice with fresh vegetables and aromatic spices",
+      image: "/images/dishes/Fried Rice.jpg"
+    },
+    {
+      id: 8,
+      name: "Thatte Idli",
+      description: "Large flat idli served with sambar and coconut chutney",
+      image: "/images/dishes/Thatte Idli.jpg"
     }
   ];
 
