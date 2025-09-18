@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Instagram, Twitter, Star, MapPin, Phone, Clock } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Instagram, Twitter, Star, MapPin, Phone, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -17,6 +18,47 @@ export default function Home() {
     "/images/dishes/disk1.jpg"
   ];
 
+  // Featured dishes auto-scroll state
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const featuredDishes = [
+    {
+      id: 1,
+      name: "Dosa",
+      description: "Crispy crepe made from fermented rice and lentil batter",
+      image: "/images/dishes/dosa.jpg"
+    },
+    {
+      id: 2,
+      name: "Idli",
+      description: "Soft steamed rice cakes served with sambar and chutney",
+      image: "/images/dishes/idlli.jpg"
+    },
+    {
+      id: 3,
+      name: "Masala Dosa",
+      description: "Crispy crepe filled with spiced potatoes and onions",
+      image: "/images/dishes/masala dosa.jpg"
+    },
+    {
+      id: 4,
+      name: "Set Dosa",
+      description: "Small soft dosas served in a set with accompaniments",
+      image: "/images/dishes/set dosa.jpg"
+    },
+    {
+      id: 5,
+      name: "Vada",
+      description: "Crispy fried lentil fritters with aromatic spices",
+      image: "/images/dishes/vada.jpg"
+    },
+    {
+      id: 6,
+      name: "Rice",
+      description: "Fragrant basmati rice with vegetables and spices",
+      image: "/images/dishes/rice.jpg"
+    }
+  ];
+
   // Auto-slide effect - continuous sliding
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,6 +67,19 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [diskImages.length]);
+
+  // Continuous scroll effect for featured dishes
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      setScrollPosition((prevPosition) => {
+        const dishWidth = 320; // Width of each dish card
+        const totalWidth = featuredDishes.length * dishWidth;
+        return (prevPosition + 1) % totalWidth; // Continuous movement
+      });
+    }, 50); // Smooth continuous movement every 50ms
+
+    return () => clearInterval(scrollInterval);
+  }, [featuredDishes.length]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -158,22 +213,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Vertical Branding */}
-          <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
-            <div className="text-amber-600 font-bold text-2xl writing-mode-vertical-rl transform rotate-180">
-              AYODHYA
-            </div>
-          </div>
-
-          {/* Top Right Elements */}
-          <div className="absolute top-8 right-8 flex items-center space-x-4">
-            <Link href="/reservations" className="text-amber-600 hover:text-amber-700 font-semibold">
-              RESERVE
-            </Link>
-            <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center text-white font-bold">
-              0
-            </div>
-          </div>
         </div>
       </section>
 
@@ -187,35 +226,62 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-12">
-            {/* Dish 1 */}
-            <div className="text-center group">
-              <div className="w-64 h-64 mx-auto mb-6 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                <div className="text-6xl">🥗</div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">Garden Fresh Salad</h3>
-              <p className="text-gray-600 mb-4">Organic greens with seasonal vegetables and house dressing</p>
-              <span className="text-2xl font-bold text-amber-600">$14</span>
-            </div>
-
-            {/* Dish 2 */}
-            <div className="text-center group">
-              <div className="w-64 h-64 mx-auto mb-6 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                <div className="text-6xl">🍛</div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">Dal Makhani</h3>
-              <p className="text-gray-600 mb-4">Creamy black lentils slow-cooked to perfection</p>
-              <span className="text-2xl font-bold text-amber-600">$16</span>
-            </div>
-
-            {/* Dish 3 */}
-            <div className="text-center group">
-              <div className="w-64 h-64 mx-auto mb-6 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                <div className="text-6xl">🍰</div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">Gulab Jamun</h3>
-              <p className="text-gray-600 mb-4">Soft milk dumplings in rose-flavored syrup</p>
-              <span className="text-2xl font-bold text-amber-600">$7</span>
+          {/* Continuous Scrolling Gallery */}
+          <div className="overflow-hidden">
+            <div 
+              className="flex"
+              style={{ transform: `translateX(-${scrollPosition}px)` }}
+            >
+              {/* First set of dishes */}
+              {featuredDishes.map((dish) => (
+                <div key={`first-${dish.id}`} className="flex-shrink-0 w-80 mx-4">
+                  <Card className="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="p-6 text-center">
+                      {/* Dish Image */}
+                      <div className="w-full h-48 mb-6 rounded-xl overflow-hidden">
+                        <Image
+                          src={dish.image}
+                          alt={dish.name}
+                          width={320}
+                          height={192}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      
+                      {/* Dish Info */}
+                      <h3 className="text-xl font-bold text-gray-800 mb-3">{dish.name}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {dish.description}
+                      </p>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {featuredDishes.map((dish) => (
+                <div key={`second-${dish.id}`} className="flex-shrink-0 w-80 mx-4">
+                  <Card className="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="p-6 text-center">
+                      {/* Dish Image */}
+                      <div className="w-full h-48 mb-6 rounded-xl overflow-hidden">
+                        <Image
+                          src={dish.image}
+                          alt={dish.name}
+                          width={320}
+                          height={192}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      
+                      {/* Dish Info */}
+                      <h3 className="text-xl font-bold text-gray-800 mb-3">{dish.name}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {dish.description}
+                      </p>
+                    </div>
+                  </Card>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Leaf, Star, Clock, ChefHat, Sparkles, ArrowRight, Plus } from "lucide-react";
+import { menuCategories, formatPrice, getAllMenuItems } from "@/data/menu-data";
 
 const MenuSection = () => {
   const ref = useRef(null);
@@ -13,161 +14,51 @@ const MenuSection = () => {
 
   const categories = [
     { id: "all", name: "All Items", icon: ChefHat },
-    { id: "appetizers", name: "Appetizers", icon: Leaf },
-    { id: "main-course", name: "Main Course", icon: Star },
-    { id: "desserts", name: "Desserts", icon: Sparkles },
-    { id: "beverages", name: "Beverages", icon: Leaf },
+    { id: "rice-special", name: "Rice Special", icon: Star },
+    { id: "paneer-special", name: "Paneer Special", icon: Leaf },
+    { id: "north-indian-curry", name: "North Indian Curry", icon: ChefHat },
+    { id: "south-indian-dishes", name: "South Indian", icon: Sparkles },
+    { id: "fresh-fruit-juice", name: "Fresh Juice", icon: Leaf },
   ];
 
-  const menuItems = [
-    // Appetizers
-    {
-      id: 1,
-      name: "Crispy Vegetable Spring Rolls",
-      description: "Fresh vegetables wrapped in rice paper, served with sweet chili sauce",
-      price: 8.99,
-      category: "appetizers",
-      prepTime: "15 min",
-      rating: 4.8,
-      isPopular: true,
-      image: "🥬",
-    },
-    {
-      id: 2,
-      name: "Avocado Bruschetta",
-      description: "Toasted bread topped with mashed avocado, cherry tomatoes, and herbs",
-      price: 7.99,
-      category: "appetizers",
-      prepTime: "10 min",
-      rating: 4.6,
-      isPopular: false,
-      image: "🥑",
-    },
-    {
-      id: 3,
-      name: "Stuffed Mushrooms",
-      description: "Portobello mushrooms filled with spinach, cheese, and herbs",
-      price: 9.99,
-      category: "appetizers",
-      prepTime: "20 min",
-      rating: 4.7,
-      isPopular: true,
-      image: "🍄",
-    },
-    // Main Course
-    {
-      id: 4,
-      name: "Vegetarian Biryani",
-      description: "Fragrant basmati rice with mixed vegetables, aromatic spices, and saffron",
-      price: 16.99,
-      category: "main-course",
-      prepTime: "25 min",
-      rating: 4.9,
-      isPopular: true,
-      image: "🍚",
-    },
-    {
-      id: 5,
-      name: "Quinoa Buddha Bowl",
-      description: "Nutritious quinoa with roasted vegetables, chickpeas, and tahini dressing",
-      price: 14.99,
-      category: "main-course",
-      prepTime: "20 min",
-      rating: 4.5,
-      isPopular: false,
-      image: "🥗",
-    },
-    {
-      id: 6,
-      name: "Eggplant Parmesan",
-      description: "Breaded eggplant with marinara sauce, mozzarella, and fresh basil",
-      price: 15.99,
-      category: "main-course",
-      prepTime: "30 min",
-      rating: 4.6,
-      isPopular: true,
-      image: "🍆",
-    },
-    {
-      id: 7,
-      name: "Vegetable Curry",
-      description: "Mixed vegetables in coconut curry sauce, served with jasmine rice",
-      price: 13.99,
-      category: "main-course",
-      prepTime: "25 min",
-      rating: 4.4,
-      isPopular: false,
-      image: "🍛",
-    },
-    // Desserts
-    {
-      id: 8,
-      name: "Chocolate Avocado Mousse",
-      description: "Rich and creamy chocolate mousse made with avocado and dark chocolate",
-      price: 6.99,
-      category: "desserts",
-      prepTime: "10 min",
-      rating: 4.7,
-      isPopular: true,
-      image: "🍫",
-    },
-    {
-      id: 9,
-      name: "Berry Cheesecake",
-      description: "Creamy cheesecake with mixed berry compote and graham cracker crust",
-      price: 7.99,
-      category: "desserts",
-      prepTime: "15 min",
-      rating: 4.8,
-      isPopular: true,
-      image: "🍰",
-    },
-    {
-      id: 10,
-      name: "Tiramisu",
-      description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone",
-      price: 8.99,
-      category: "desserts",
-      prepTime: "12 min",
-      rating: 4.9,
-      isPopular: true,
-      image: "☕",
-    },
-    // Beverages
-    {
-      id: 11,
-      name: "Fresh Green Smoothie",
-      description: "Spinach, kale, banana, and apple blended with coconut water",
-      price: 5.99,
-      category: "beverages",
-      prepTime: "5 min",
-      rating: 4.3,
-      isPopular: false,
-      image: "🥤",
-    },
-    {
-      id: 12,
-      name: "Turmeric Latte",
-      description: "Golden milk with turmeric, ginger, and plant-based milk",
-      price: 4.99,
-      category: "beverages",
-      prepTime: "8 min",
-      rating: 4.5,
-      isPopular: true,
-      image: "☕",
-    },
-    {
-      id: 13,
-      name: "Fresh Fruit Juice",
-      description: "Seasonal fresh fruit juice - ask about today's selection",
-      price: 3.99,
-      category: "beverages",
-      prepTime: "5 min",
-      rating: 4.4,
-      isPopular: false,
-      image: "🍹",
-    },
-  ];
+  // Get all menu items from our data
+  const allMenuItems = getAllMenuItems();
+  
+  // Transform the data to match the component's expected format
+  const menuItems = allMenuItems.map(item => ({
+    id: item.id,
+    name: item.name,
+    description: item.description || `${item.name} - Delicious vegetarian dish`,
+    price: item.price,
+    category: item.category,
+    prepTime: "15-20 min",
+    rating: 4.5 + Math.random() * 0.4, // Random rating between 4.5-4.9
+    isPopular: item.popular || false,
+    image: getEmojiForCategory(item.category),
+  }));
+
+  // Helper function to get emoji based on category
+  function getEmojiForCategory(category: string): string {
+    const emojiMap: { [key: string]: string } = {
+      "rice-special": "🍚",
+      "paneer-special": "🧀",
+      "meals": "🍽️",
+      "north-indian-curry": "🍛",
+      "tandoori-items": "🔥",
+      "roti-curry": "🥖",
+      "north-indian-biriyani": "🍚",
+      "south-indian-dishes": "🥘",
+      "manchurian-gravy": "🥢",
+      "north-indian-palav": "🍚",
+      "fresh-fruit-juice": "🍹",
+      "dry-fruit-milk-shake": "🥛",
+      "fresh-fruit-milk-shake": "🥤",
+      "special-milk-shake": "🍫",
+      "ragi-milk-shake": "🌾",
+      "others": "🍽️"
+    };
+    return emojiMap[category] || "🍽️";
+  }
 
   const filteredItems = activeCategory === "all" 
     ? menuItems 
@@ -296,7 +187,7 @@ const MenuSection = () => {
                     
                     <div className="flex items-center space-x-4">
                       <div className="text-3xl font-bold text-emerald-400">
-                        ${item.price}
+                        {formatPrice(item.price)}
                       </div>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
