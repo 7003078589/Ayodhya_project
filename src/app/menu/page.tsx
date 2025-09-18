@@ -1,14 +1,20 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Star, Leaf } from "lucide-react";
-import { menuCategories, formatPrice } from "@/data/menu-data";
+import { Star } from "lucide-react";
+
+interface MenuItem {
+  id: number;
+  name: string;
+  nameKannada?: string;
+  description: string;
+  price: number;
+  featured: boolean;
+  dietary: string | null;
+}
 
 export default function Menu() {
   // Real menu data from your restaurant
-  const starters = [
+  const starters: MenuItem[] = [
     {
       id: 1,
       name: "Onion Dosa",
@@ -59,7 +65,7 @@ export default function Menu() {
     }
   ];
 
-  const mainCourses = [
+  const mainCourses: MenuItem[] = [
     {
       id: 7,
       name: "Paneer Ghee Roast",
@@ -162,8 +168,8 @@ export default function Menu() {
                 {item.featured && <Star className="w-4 h-4 text-yellow-400 fill-current" />}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">{item.name}</h3>
-                  {(item as any).nameKannada && (
-                    <p className="text-sm text-gray-600 italic">{(item as any).nameKannada}</p>
+                  {item.nameKannada && (
+                    <p className="text-sm text-gray-600 italic">{item.nameKannada}</p>
                   )}
                 </div>
               </div>
@@ -191,8 +197,8 @@ export default function Menu() {
                 {item.featured && <Star className="w-4 h-4 text-yellow-400 fill-current" />}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">{item.name}</h3>
-                  {(item as any).nameKannada && (
-                    <p className="text-sm text-gray-600 italic">{(item as any).nameKannada}</p>
+                  {item.nameKannada && (
+                    <p className="text-sm text-gray-600 italic">{item.nameKannada}</p>
                   )}
                 </div>
               </div>

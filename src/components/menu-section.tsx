@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Leaf, Star, Clock, ChefHat, Sparkles, ArrowRight, Plus } from "lucide-react";
-import { menuCategories, formatPrice, getAllMenuItems } from "@/data/menu-data";
+import { formatPrice, getAllMenuItems } from "@/data/menu-data";
 
 const MenuSection = () => {
   const ref = useRef(null);

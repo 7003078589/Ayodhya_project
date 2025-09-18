@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Instagram, Twitter, Star, MapPin, Phone, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Instagram, Twitter, Star, MapPin, Phone, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
